@@ -5,6 +5,16 @@ Metodo aparece(unElemento) -> personaje activo -> encontrar elemento
 Personaje activo arranca en mario -> variable
 */
 object luisa {
+    var personajeActivo = mario
+    method personajeActivo() = personajeActivo
+    method cambiarJugador(nuevoPersonaje) {
+      personajeActivo = nuevoPersonaje
+    }
+
+    method aparece(unElemento) {
+      
+    }
+
   
 }
 //-----Floki Guerrero-----//
