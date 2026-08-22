@@ -1,10 +1,20 @@
 //-----Luisa Jugadora-----//
+/*
+Personaje manejado = personaje activo -> floki o mario
+Metodo aparece(unElemento) -> personaje activo -> encontrar elemento
+Personaje activo arranca en mario -> variable
+*/
 object luisa {
   
 }
 //-----Floki Guerrero-----//
 /*
-
+Tiene una de las dos armas
+Implementa el metodo encontrar(elemento) -> el elemento recibe ataque = a valor de potencia del arma & el arma registra el uso.
+El arma debe estar cargada
+Ataque a castillo -> valor de defensa - potencia del ataque
+Ataque a aurora -> Si potencia del ataque >= 10 -> Esta viva = false sino {nada}
+Ataque a tipa -> {nada}
 */
 object floki {
   
@@ -12,6 +22,13 @@ object floki {
 }
 //-----Mario Trabajador-----//
 /*
+Implementa el metodo encontrar(elemento)
+Valor recolectado (variable) arranca en 15 (arranca con 1 encuentro con aurora)
+Encuentra a castillo -> recolecta valor = defensa del castillo / 5 -> defensa del castillo + 20 (tope 200)
+Encuentra a aurora -> recolecta valor = 15 -> a aurora {nada}
+Encuentra a tipa -> recolecta valor = altura de tipa * 2 -> altura de tipa + 1
+Metodo esFeliz arranca en false -> si valor recolectado >= 50 o ultimo elemento encontrado = tipa -> esFeliz = true
+Variable ultimo elemento encontrado
 
 */
 object mario {
@@ -41,27 +58,32 @@ Se puede usar solo una vez, al usarla deja de estar cargada
 object jabalina {
   var estaCargada = true
 
-  method ptencia() = 30
+  method potencia() = 30
   method registrarUso() {estaCargada = false}
   method estaCargada() = estaCargada
 }
 //-----Castillo Elemento-----//
 /*
-
+Tiene 10 metros de altura (constante)
+Tiene valor de defensa (variable numerica arranca en 150)
+Recibe ataque de floki -> valor de defensa - potencia del ataque
 */
 object castillo {
   
 }
 //-----Vaca Aurora Elemento-----//
 /*
-
+Tiene 1 metro de altura (constante)
+Esta viva o no (booleano nace viva = arranca en true)
+Recibe ataque de floki -> Si potencia del ataque >= 10 -> Esta viva = false sino {nada}
 */
 object aurora {
   
 }
 //-----Arbol Tipa Elemento-----//
 /*
-
+Arranca en 8 metros (variable)
+Recibe ataque de floki -> {nada}
 */
 object tipa {
   
