@@ -57,6 +57,19 @@ Variable ultimo elemento encontrado
 
 */
 object mario {
+    var valorRecolectado = 0
+    method valorRecolectado() = valorRecolectado
+    var ultimoElemento = aurora
+    method ultimoElemento() = ultimoElemento
+
+    method estaFeliz() = valorRecolectado >= 50 || ultimoElemento.altura() >= 10
+
+    method encontrar(unElemento) {
+        const resultado = unElemento.recibirTrabajo()
+        ultimoElemento = unElemento
+        valorRecolectado = valorRecolectado + resultado
+    } 
+
   
 }
 //-----Ballesta Arma-----//
@@ -99,7 +112,12 @@ object castillo {
     method nivelDeDefensa() = nivelDeDefensa
 
     method recibirAtaque(potencia) {
-      
+      nivelDeDefensa = nivelDeDefensa - potencia
+    }
+
+    method recibirTrabajo() {
+      nivelDeDefensa = (nivelDeDefensa + 20).min(200)
+      return nivelDeDefensa / 5
     }
   
 }
@@ -111,10 +129,17 @@ Recibe ataque de floki -> Si potencia del ataque >= 10 -> Esta viva = false sino
 */
 object aurora {
     method altura() = 1
-    method estaViva() = true
+    var estaViva = true
+    method estaViva() = estaViva
 
     method recibirAtaque(potencia) {
-      
+      if (potencia >= 10){
+        estaViva = false
+      }
+    }
+
+    method recibirTrabajo() {
+      return 15
     }
 }
 //-----Arbol Tipa Elemento-----//
@@ -128,5 +153,10 @@ object tipa {
         
     method recibirAtaque(potencia) {
       
+    }
+
+    method recibirTrabajo() {
+      altura = altura + 1
+      return altura * 2
     }
 }
