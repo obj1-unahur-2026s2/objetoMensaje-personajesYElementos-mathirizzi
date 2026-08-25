@@ -12,8 +12,9 @@ object luisa {
     }
 
     method aparece(unElemento) {
-      
+      personajeActivo.encontrar(unElemento)
     }
+    
 
   
 }
@@ -27,8 +28,22 @@ Ataque a aurora -> Si potencia del ataque >= 10 -> Esta viva = false sino {nada}
 Ataque a tipa -> {nada}
 */
 object floki {
+    var armaActual = ballesta
+    method armaActual() = armaActual
+    method cambiarDeArma(nuevaArma) {
+      armaActual = nuevaArma
+    }
   
-  
+  method encontrar(unElemento) {
+    if (armaActual.estaCargada()){
+
+    unElemento.recibirAtaque(armaActual.potencia())
+    armaActual.registrarUso()
+
+    } else {
+        throw new Exception(message = "El arma no está cargada")
+    }
+  }
 }
 //-----Mario Trabajador-----//
 /*
@@ -74,11 +89,18 @@ object jabalina {
 }
 //-----Castillo Elemento-----//
 /*
-Tiene 10 metros de altura (constante)
+Tiene 20 metros de altura (constante)
 Tiene valor de defensa (variable numerica arranca en 150)
 Recibe ataque de floki -> valor de defensa - potencia del ataque
 */
 object castillo {
+    method altura() = 20
+    var nivelDeDefensa = 150
+    method nivelDeDefensa() = nivelDeDefensa
+
+    method recibirAtaque(potencia) {
+      
+    }
   
 }
 //-----Vaca Aurora Elemento-----//
@@ -88,7 +110,12 @@ Esta viva o no (booleano nace viva = arranca en true)
 Recibe ataque de floki -> Si potencia del ataque >= 10 -> Esta viva = false sino {nada}
 */
 object aurora {
-  
+    method altura() = 1
+    method estaViva() = true
+
+    method recibirAtaque(potencia) {
+      
+    }
 }
 //-----Arbol Tipa Elemento-----//
 /*
@@ -96,5 +123,10 @@ Arranca en 8 metros (variable)
 Recibe ataque de floki -> {nada}
 */
 object tipa {
-  
+    var altura = 8
+    method altura() = altura
+        
+    method recibirAtaque(potencia) {
+      
+    }
 }
